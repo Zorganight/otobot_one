@@ -1,41 +1,79 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <link name="base_link">
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
 
-    </link>
+
+    <link name="base_link"/>
 
     <joint name="chasis_joint" type="fixed">
         <parent link="base_link"/>
         <child link="chasis"/>
-        <origin xyz="-0.1 0 0"/>
+        <origin xyz="-0.1 0 0.07"/>
     </joint>
 
-
     <link name="chasis">
-    
+        <visual>
+            <origin xyz="0 0 0.01" rpy="-1.57 0 0" />
+            <geometry>
+                <mesh filename="package://otobot_one/description/meshes/govde.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://otobot_one/description/meshes/govde.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>    
     </link>
 
+    <!-- Left Wheel -->
     <joint name="left_wheel_joint" type="continuous">
-        <parent link="base_link" />
+        <parent link="base_link"/>
         <child link="left_wheel"/>
+        <origin xyz="0.04 0.025 0.035" rpy="0 0 1.57" />
+        <axis xyz="0 -1 0" />
     </joint>
 
     <link name="left_wheel">
-    
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://otobot_one/description/meshes/tekerlek_left.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
+            <geometry>
+                <sphere radius="0.033"/>
+            </geometry>
+        </collision>
     </link>
 
-
+    <!-- Right Wheel -->
     <joint name="right_wheel_joint" type="continuous">
-        <parent link="base_link" />
+        <parent link="base_link"/>
         <child link="right_wheel"/>
+        <origin xyz="-0.24 0.025 0.035" rpy="0 0 -1.57" />
+        <axis xyz="0 1 0" />
     </joint>
 
     <link name="right_wheel">
-    
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://otobot_one/description/meshes/tekerlek_right.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 -0.015 0" rpy="1.57 0 0" />
+            <geometry>
+                <sphere radius="0.033"/>
+            </geometry>
+        </collision>   
     </link>
-
-
-
 
 </robot>
