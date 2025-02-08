@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="base_link">
+
+    </link>
+
+    <joint name="chasis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chasis"/>
+        <origin xyz="-0.1 0 0"/>
+    </joint>
+
+
+    <link name="chasis">
+    
+    </link>
+
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="left_wheel"/>
+    </joint>
+
+    <link name="left_wheel">
+    
+    </link>
+
+
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link" />
+        <child link="right_wheel"/>
+    </joint>
+
+    <link name="right_wheel">
+    
+    </link>
+
+
+
+
+</robot>
